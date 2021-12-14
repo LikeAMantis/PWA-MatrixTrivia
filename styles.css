@@ -1,0 +1,267 @@
+:root {
+    --primary: #008f11;
+    --animDuration: 350ms;
+}
+
+.slideOutTop {
+    opacity: 1;
+    animation: slideOutTop var(--animDuration) ease-in-out;
+}
+
+/* Animation */
+@keyframes slideOutTop {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+
+.slideOutBottom {
+    opacity: 1;
+    animation: slideOutBottom var(--animDuration) ease-in-out;
+}
+
+/* Animation */
+@keyframes slideOutBottom {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+
+.slideInBottom {
+    opacity: 0;
+    animation: slideInBottom var(--animDuration) ease-in-out backwards;
+}
+
+/* Animation */
+@keyframes slideInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.slideInTop {
+    opacity: 0;
+    animation: slideInTop var(--animDuration) ease-in-out backwards;
+}
+
+/* Animation */
+@keyframes slideInTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.slideInLeft {
+    opacity: 0;
+    animation: slideInLeft var(--animDuration) ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slideInRight {
+    opacity: 0;
+    animation: slideInRight var(--animDuration) ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.pop {
+    animation: pop var(--animDuration) ease-out;
+}
+
+@keyframes pop {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+#counterCopy {
+    opacity: 0;
+}
+
+.header span {
+    display: inline-block;
+    position: absolute;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: black;
+    color: white;
+    font-family: monospace;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://www.roehrenstars.de/images/blog_articles/303/b2ap3_large_shutterstock_161746904.jpg);
+    filter: opacity(0.2);
+    background-size: cover;
+}
+
+.center {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 100%;
+    margin: 0 50px;
+}
+
+.questionContainer {
+    display: grid;
+    row-gap: 25px;
+    align-items: start;
+    align-content: center;
+    align-self: start;
+    max-width: 750px;
+}
+
+.buttons {
+    display: grid;
+    grid-auto-flow: column;
+    width: 100%;
+    align-items: start;
+    justify-items: start;
+}
+
+.buttons .mover {
+    justify-self: end;
+    transform: translate(-30px, -1px);
+}
+
+.fa-arrow-circle-o-left:before {
+    color: var(--primary);
+    font-size: 2.8rem;
+}
+
+#question {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#options:not(:empty)::before {
+    content: "your options: ";
+}
+
+#answer {
+    display: none;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#answer::before {
+    content: "Answer: ";
+}
+
+#answer~a {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+#options {
+    color: #9575cd;
+    white-space: break-spaces;
+    padding-left: 1.5rem;
+}
+
+#explanation::before {
+    content: "Explanation:";
+    display: block;
+    font-weight: bold;
+}
+
+#explanation,
+#explanation~a {
+    display: none;
+}
+
+#explanation~a {
+    color: white;
+    font-size: 1rem;
+}
+
+#next {
+    background: var(--primary);
+    padding: 12px 18px;
+    margin: 0;
+    border-radius: 100px;
+    border: none;
+    user-select: none;
+    font-variant: all-petite-caps;
+    font-size: 1rem;
+}
+
+.buttons * {
+    cursor: pointer;
+}
+
+.buttons *:hover {
+    filter: brightness(1.2);
+}
+.header {
+    align-self: center;
+}
+
+.header::before {
+    content: "Question #";
+}
+

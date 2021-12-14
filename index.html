@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <link rel="icon" href="../logo.png">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="manifest" href="../manifest.json">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Matrix Trivia</title>
+    </head>
+
+    <body>
+        <div class="center">
+            <h1 class="header">
+                <span id="numberCopy"></span>
+                <span id="number"></span>
+            </h1>
+            <div class="questionContainer">
+                <div>
+                    <div id="question">Question</div>
+                    <div id="options">Options</div>
+                </div>
+                <div>
+                    <div id="answer">Answer</div>
+                    <a href="javascript:showAnswer()">Show Answer</a>
+                </div>
+                <div>
+                    <div id="explanation">Explanation</div>
+                    <a href="javascript:showExplanation()">Show Explanation</a>
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="mover"><i class="fa fa-arrow-circle-o-left" onclick="prevQuestion(); animationPrev()" aria-hidden="true"></i></div>
+                <button id="next" onclick="nextQuestion(); animationNext();">Next Question</button>
+            </div>
+        </div>
+        <script src="questions.js"></script>
+        <script defer src="index.js"></script>
+    </body>
+
+</html>
