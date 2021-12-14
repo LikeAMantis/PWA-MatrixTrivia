@@ -1,8 +1,7 @@
 {
     "short_name": "Matrix Trivia",
     "name": "Matrix Trivia",
-    "start_url": "/?home=true",
-    "type": "module",
+    "start_url": "/PWA-MatrixTrivia/",
     "icons": [
         {
             "src": "icons/manifest-icon-192.maskable.png",
