@@ -2,14 +2,12 @@ const question = document.querySelector("#question");
 const answer = document.querySelector("#answer");
 const options = document.querySelector("#options");
 const explanation = document.querySelector("#explanation");
-
-var index = JSON.parse(localStorage?.matrix ?? null)?.index-1 ?? -1;
+var index = JSON.parse(localStorage?.matrix ?? null)?.index ?? 0;
+index--;
 
 
 
 // onLoad
-// document.querySelector("#number").innerText = index + 2;
-// // document.querySelector("#numberCopy").innerText = index + 2;
 nextQuestion();
 
 
