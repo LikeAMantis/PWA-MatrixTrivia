@@ -2,7 +2,6 @@
     "short_name": "Matrix Trivia",
     "name": "Matrix Trivia",
     "start_url": "/?home=true",
-    "scope": "/",
     "type": "module",
     "icons": [
         {
@@ -32,6 +31,5 @@
     ],
     "background_color": "#008f11",
     "display": "fullscreen",
-    "orientation": "portrait",
     "theme_color": "#008f11"
 }

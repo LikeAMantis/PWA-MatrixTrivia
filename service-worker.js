@@ -1,3 +1,6 @@
+const repository = "PWA-MatrixTrivia";
+var version = 1;
+
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.2.0/workbox-sw.js');
 
 workbox.routing.registerRoute(
@@ -6,10 +9,10 @@ workbox.routing.registerRoute(
 );
 
 workbox.precaching.precacheAndRoute([
-    { url: 'index.html', revision: '1' },
-    { url: 'app/index.js', revision: '1' },
-    { url: 'app/questions.js', revision: '1' },
-    { url: 'app/styles.css', revision: '1' },
+    { url: `/${repository}/index.html`, revision: `${version}` },
+    { url: `/${repository}/app/index.js`, revision: `${version}` },
+    { url: `/${repository}/app/questions.js`, revision: `${version}` },
+    { url: `/${repository}/app/styles.css`, revision: `${version}` },
 ]);
 
-workbox.recipes.offlineFallback({ pageFallback: "index.html" });
+workbox.recipes.offlineFallback({ pageFallback: `/${repository}/index.html` });

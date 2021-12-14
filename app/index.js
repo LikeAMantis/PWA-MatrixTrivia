@@ -1,3 +1,4 @@
+const repository = "PWA-MatrixTrivia";
 const question = document.querySelector("#question");
 const answer = document.querySelector("#answer");
 const options = document.querySelector("#options");
@@ -97,7 +98,7 @@ function animateCSS(element, animation) {
 if ('serviceWorker' in navigator) {
     // Use the window load event to keep the page load performant
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('../service-worker.js');
+        navigator.serviceWorker.register(`/${repository}/service-worker.js`, {scope: `/${repository}/`});
     });
 }
 
