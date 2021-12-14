@@ -8,6 +8,7 @@
         <link rel="icon" href="../logo.png">
         <link rel="stylesheet" href="styles.css">
         <link rel="manifest" href="../manifest.json">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Matrix Trivia</title>
     </head>
 
@@ -31,7 +32,10 @@
                     <a href="javascript:showExplanation()">Show Explanation</a>
                 </div>
             </div>
-            <button id="next" onclick="nextQuestion(); animationNext();">Next Question</button>
+            <div class="buttons">
+                <div class="mover"><i class="fa fa-arrow-circle-o-left" onclick="prevQuestion(); animationPrev()" aria-hidden="true"></i></div>
+                <button id="next" onclick="nextQuestion(); animationNext();">Next Question</button>
+            </div>
         </div>
         <script src="questions.js"></script>
         <script defer src="index.js"></script>

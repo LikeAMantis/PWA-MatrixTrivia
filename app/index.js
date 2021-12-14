@@ -2,14 +2,14 @@ const question = document.querySelector("#question");
 const answer = document.querySelector("#answer");
 const options = document.querySelector("#options");
 const explanation = document.querySelector("#explanation");
-const header = document.querySelector(".header");
-var index = JSON.parse(localStorage?.matrix ?? null)?.index ?? 0; // später über client Storage bekommen und speichern
+
+var index = JSON.parse(localStorage?.matrix ?? null)?.index-1 ?? -1;
 
 
 
 // onLoad
-header.children[1].innerText = index + 1;
-header.children[0].innerText = index + 1;
+// document.querySelector("#number").innerText = index + 2;
+// // document.querySelector("#numberCopy").innerText = index + 2;
 nextQuestion();
 
 
@@ -27,23 +27,42 @@ function showExplanation() {
 }
 
 function nextQuestion() {
-    index = index % questions.length;
+    index = ++index % questions.length;
+    displayQuestion();
+    document.querySelector("#numberCopy").innerText = index + 1;
+
+    localStorage.matrix = JSON.stringify({ index });
+}
+
+function prevQuestion() {
+    index = (--index % questions.length);
+    index = index < 0 ? questions.length - 1 : index;
+    displayQuestion();
+    document.querySelector("#numberCopy").innerText = index + 1;
+
+    localStorage.matrix = JSON.stringify({ index });
+}
+
+function displayQuestion() {
+    reset();
     question.innerText = parseComma(questions[index].question);
     answer.innerText = parseComma(questions[index].answer);
     explanation.innerText = parseComma(questions[index].explanation);
     options.innerText = questions[index].options;
-    document.querySelector("#numberCopy").innerText = index + 1;
-    reset();
-
-    localStorage.matrix = JSON.stringify({ index });
-    index++;
 }
 
-async function animationNext() {
-    animateCSS("#numberCopy", "slideInTop");
-    animateCSS("#number", "slideOutTop").then(() => document.querySelector("#number").innerText = index);
+function animationNext() {
     animateCSS("#next", "pop");
+    animateCSS("#numberCopy", "slideInTop");
+    animateCSS("#number", "slideOutBottom").then(() => document.querySelector("#number").innerText = index + 1);
     animateCSS(".questionContainer", "slideInLeft");
+}
+
+function animationPrev() {
+    animateCSS(".buttons i", "pop");
+    animateCSS("#numberCopy", "slideInBottom");
+    animateCSS("#number", "slideOutTop").then(() => document.querySelector("#number").innerText = index + 1);
+    animateCSS(".questionContainer", "slideInRight");
 }
 
 function reset() {
@@ -57,7 +76,7 @@ function parseComma(text) {
     return text.replaceAll(";", ",");
 }
 
-async function animateCSS(element, animation) {
+function animateCSS(element, animation) {
     // We create a Promise and return it
     return new Promise((resolve, reject) => {
         const animationName = animation;

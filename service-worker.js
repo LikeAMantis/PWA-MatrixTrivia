@@ -7,4 +7,7 @@ workbox.routing.registerRoute(
 
 // precacheAndRoute([
 //     {url: 'app/index.html', revision: '1' },
+//     {url: 'app/index.js', revision: '1' },
+//     {url: 'app/questions.js', revision: '1' },
+//     {url: 'app/styles.css', revision: '1' },
 //   ]);

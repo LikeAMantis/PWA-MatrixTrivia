@@ -3,6 +3,7 @@
     "name": "Matrix Trivia",
     "start_url": "/?home=true",
     "scope": "/",
+    "type": "module",
     "icons": [
         {
             "src": "icons/manifest-icon-192.maskable.png",
