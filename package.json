@@ -1,5 +1,8 @@
 {
-  "dependencies": {
-    "animate.css": "^4.1.1"
-  }
+    "scripts": {
+        "pages": "gh-pages -d app"
+    },
+    "dependencies": {
+        "gh-pages": "^3.2.3"
+    }
 }

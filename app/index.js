@@ -2,14 +2,10 @@ const question = document.querySelector("#question");
 const answer = document.querySelector("#answer");
 const options = document.querySelector("#options");
 const explanation = document.querySelector("#explanation");
-
-var index = JSON.parse(localStorage?.matrix ?? null)?.index-1 ?? -1;
-
-
+var index = JSON.parse(localStorage?.matrix ?? null)?.index ?? 0;
+index--;
 
 // onLoad
-// document.querySelector("#number").innerText = index + 2;
-// // document.querySelector("#numberCopy").innerText = index + 2;
 nextQuestion();
 
 
@@ -97,22 +93,22 @@ function animateCSS(element, animation) {
 
 
 
-// PWA
-// if ('serviceWorker' in navigator) {
-//     // Use the window load event to keep the page load performant
-//     window.addEventListener('load', () => {
-//         navigator.serviceWorker.register('../service-worker.js');
-//     });
-// }
+//PWA
+if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../service-worker.js');
+    });
+}
 
-// let deferredPrompt;
-// window.addEventListener('beforeinstallprompt', (e) => {
-//     // Prevent the mini-infobar from appearing on mobile
-//     e.preventDefault();
-//     // Stash the event so it can be triggered later.
-//     deferredPrompt = e;
-//     // Update UI notify the user they can install the PWA
-//     showInstallPromotion();
-//     // Optionally, send analytics event that PWA install promo was shown.
-//     console.log(`'beforeinstallprompt' event was fired.`);
-// });
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Update UI notify the user they can install the PWA
+    showInstallPromotion();
+    // Optionally, send analytics event that PWA install promo was shown.
+    console.log(`'beforeinstallprompt' event was fired.`);
+});

@@ -152,7 +152,7 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: url(https://www.roehrenstars.de/images/blog_articles/303/b2ap3_large_shutterstock_161746904.jpg);
-    filter: opacity(0.125);
+    filter: opacity(0.2);
     background-size: cover;
 }
 

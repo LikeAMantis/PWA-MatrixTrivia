@@ -5,9 +5,11 @@ workbox.routing.registerRoute(
     new workbox.strategies.CacheFirst()
 );
 
-// precacheAndRoute([
-//     {url: 'app/index.html', revision: '1' },
-//     {url: 'app/index.js', revision: '1' },
-//     {url: 'app/questions.js', revision: '1' },
-//     {url: 'app/styles.css', revision: '1' },
-//   ]);
+workbox.precaching.precacheAndRoute([
+    { url: 'index.html', revision: '1' },
+    { url: 'app/index.js', revision: '1' },
+    { url: 'app/questions.js', revision: '1' },
+    { url: 'app/styles.css', revision: '1' },
+]);
+
+workbox.recipes.offlineFallback({ pageFallback: "index.html" });
