@@ -11,7 +11,7 @@ workbox.routing.registerRoute(
 workbox.precaching.precacheAndRoute([
     { url: `/${repository}/index.html`, revision: `${version}` },
     { url: `/${repository}/app/index.js`, revision: `${version}` },
-    { url: `/${repository}/app/questions.js`, revision: `${version}` },
+    { url: `/${repository}/app/questions.js`, revision: `2` },
     { url: `/${repository}/app/styles.css`, revision: `${version}` },
 ]);
 

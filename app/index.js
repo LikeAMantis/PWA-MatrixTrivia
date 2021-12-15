@@ -49,14 +49,14 @@ function displayQuestion() {
 }
 
 function animationNext() {
-    animateCSS("#next", "pop");
+    // animateCSS("#next", "pop");
     animateCSS("#numberCopy", "slideInTop");
     animateCSS("#number", "slideOutBottom").then(() => document.querySelector("#number").innerText = index + 1);
     animateCSS(".questionContainer", "slideInLeft");
 }
 
 function animationPrev() {
-    animateCSS(".buttons i", "pop");
+    // animateCSS(".buttons i", "pop");
     animateCSS("#numberCopy", "slideInBottom");
     animateCSS("#number", "slideOutTop").then(() => document.querySelector("#number").innerText = index + 1);
     animateCSS(".questionContainer", "slideInRight");
