@@ -1,4 +1,4 @@
-export const repository = "PWA-MatrixTrivia";
+const repository = "PWA-MatrixTrivia";
 var version = 1;
 
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.2.0/workbox-sw.js');
