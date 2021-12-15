@@ -1,4 +1,5 @@
-const repository = "PWA-MatrixTrivia";
+import { repository } from "../service-worker";
+
 const question = document.querySelector("#question");
 const answer = document.querySelector("#answer");
 const options = document.querySelector("#options");
