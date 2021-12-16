@@ -32,8 +32,8 @@ if (bMobile) { // Touch
 
     document.addEventListener("touchend", (e) => {
         var endDrag = e.changedTouches[0].clientX;
-        if (startDrag - endDrag > dragOffset) { prevQuestion(); animationPrev(); }
-        else if (startDrag - endDrag < -dragOffset) { nextQuestion(); animationNext(); }
+        if (startDrag - endDrag > dragOffset) { nextQuestion(); animationNext(); }
+        else if (startDrag - endDrag < -dragOffset) { prevQuestion(); animationPrev(); }
     });
 } 
 else { // Desktop
@@ -110,17 +110,15 @@ function displayQuestion() {
 }
 
 function animationNext() {
-    // animateCSS("#next", "pop");
     animateCSS("#numberCopy", "slideInTop");
     animateCSS("#number", "slideOutBottom").then(() => document.querySelector("#number").innerText = index + 1);
-    animateCSS(".questionContainer", "slideInLeft");
+    animateCSS(".questionContainer", "slideInRight");
 }
 
 function animationPrev() {
-    // animateCSS(".buttons i", "pop");
     animateCSS("#numberCopy", "slideInBottom");
     animateCSS("#number", "slideOutTop").then(() => document.querySelector("#number").innerText = index + 1);
-    animateCSS(".questionContainer", "slideInRight");
+    animateCSS(".questionContainer", "slideInLeft");
 }
 
 function reset() {
