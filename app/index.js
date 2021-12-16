@@ -1,3 +1,4 @@
+// Init
 const repository = "PWA-MatrixTrivia";
 const question = document.querySelector("#question");
 const answer = document.querySelector("#answer");
@@ -6,12 +7,72 @@ const explanation = document.querySelector("#explanation");
 var index = JSON.parse(localStorage?.matrix ?? null)?.index ?? 0;
 index--;
 
+
+
 // onLoad
 nextQuestion();
 
 
 
+// check If Mobile
+const bMobile =   // will be true if running on a mobile device
+    navigator.userAgent.indexOf("Mobile") !== -1 ||
+    navigator.userAgent.indexOf("iPhone") !== -1 ||
+    navigator.userAgent.indexOf("Android") !== -1 ||
+    navigator.userAgent.indexOf("Windows Phone") !== -1;
 
+if (bMobile) { // Touch
+    document.documentElement.style.setProperty('--bgOpacity', 0.3);
+
+    const dragOffset = 75;
+    var startDrag;
+    document.addEventListener("touchstart", (e) => {
+        startDrag = e.changedTouches[0].clientX;
+    });
+
+    document.addEventListener("touchend", (e) => {
+        var endDrag = e.changedTouches[0].clientX;
+        if (startDrag - endDrag > dragOffset) { prevQuestion(); animationPrev(); }
+        else if (startDrag - endDrag < -dragOffset) { nextQuestion(); animationNext(); }
+    });
+} 
+else { // Desktop
+    document.body.addEventListener("keydown", e => {
+        if (e.code === "ArrowLeft") { prevQuestion(); animationPrev(); }
+        else if (e.code === "ArrowRight") { nextQuestion(); animationNext(); }
+    });
+};
+
+
+
+
+
+
+
+
+// PWA
+if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register(`/${repository}/service-worker.js`, { scope: `/${repository}/` });
+    });
+}
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Update UI notify the user they can install the PWA
+    showInstallPromotion();
+    // Optionally, send analytics event that PWA install promo was shown.
+    console.log(`'beforeinstallprompt' event was fired.`);
+});
+
+
+
+// Functions
 function showAnswer() {
     answer.style.display = "block";
     answer.parentElement.children[1].style.display = "none";
@@ -91,25 +152,3 @@ function animateCSS(element, animation) {
         node.addEventListener('animationend', handleAnimationEnd, { once: true });
     });
 }
-
-
-
-//PWA
-if ('serviceWorker' in navigator) {
-    // Use the window load event to keep the page load performant
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register(`/${repository}/service-worker.js`, {scope: `/${repository}/`});
-    });
-}
-
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e;
-    // Update UI notify the user they can install the PWA
-    showInstallPromotion();
-    // Optionally, send analytics event that PWA install promo was shown.
-    console.log(`'beforeinstallprompt' event was fired.`);
-});
